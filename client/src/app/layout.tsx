@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { TRPCReactProvider } from "@/trpc/client";
 import "./globals.css";
 
 const plexSans = IBM_Plex_Sans({
@@ -15,8 +16,8 @@ const plexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ArtefactAI",
-  description: "Data and AI interface in the visual world of artefact.com",
+  title: "Tarefas · ArtefactAI",
+  description: "Gerenciador de tarefas com Next.js e tRPC",
 };
 
 export default function RootLayout({
@@ -25,11 +26,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${plexSans.variable} ${plexMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="pt-BR">
+      <body className={`${plexSans.variable} ${plexMono.variable} antialiased`}>
+        <TRPCReactProvider>{children}</TRPCReactProvider>
       </body>
     </html>
   );
