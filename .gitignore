@@ -2,3 +2,4 @@
 reports/cleanup/
 generated-tests/prompts/
 .claude/launch.json
+node_modules/
