@@ -1,0 +1,4 @@
+.claude/.quality-gate/
+reports/cleanup/
+generated-tests/prompts/
+.claude/launch.json
