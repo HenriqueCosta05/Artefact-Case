@@ -1,26 +1,67 @@
 @import "tailwindcss";
 
+/* The world is light by design; dark: only applies on explicit opt-in. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* Tokens from DESIGN.md ("The Prism Lab"). The frontmatter there is normative. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --navy-ink: #0d1634;
+  --indigo-depth: #273275;
+  --spectrum-blue: #001994;
+  --cobalt: #0046e1;
+  --electric-blue: #1f65ff;
+  --magenta: #ff0066;
+  --magenta-deep: #d6004f;
+  --magenta-ink: #b30047;
+  --mist: #cbcbcb;
+  --paper: #ffffff;
+
+  --background: var(--paper);
+  --foreground: var(--navy-ink);
+
+  --spectrum-field: linear-gradient(142deg, var(--spectrum-blue) 17%, var(--magenta) 83%);
+  --spectrum-headline: linear-gradient(90deg, var(--magenta) 0%, var(--electric-blue) 100%);
+  --spectrum-stroke: linear-gradient(135deg, var(--cobalt), var(--magenta));
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-navy-ink: var(--navy-ink);
+  --color-indigo-depth: var(--indigo-depth);
+  --color-spectrum-blue: var(--spectrum-blue);
+  --color-cobalt: var(--cobalt);
+  --color-electric-blue: var(--electric-blue);
+  --color-magenta: var(--magenta);
+  --color-magenta-deep: var(--magenta-deep);
+  --color-magenta-ink: var(--magenta-ink);
+  --color-mist: var(--mist);
+  --color-paper: var(--paper);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-sans: var(--font-ibm-plex-sans), Arial, Helvetica, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, monospace;
+
+  --radius-sm: 5px;
+  --radius-card: 8px;
+  --radius-md: 10px;
+  --radius-pill: 40px;
+
+  --ease-brand: cubic-bezier(0.42, 0.01, 0.58, 1);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-ibm-plex-sans), Arial, Helvetica, sans-serif;
+  caret-color: var(--magenta-deep);
+}
+
+::selection {
+  background: var(--magenta-deep);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--magenta-deep);
+  outline-offset: 2px;
 }
