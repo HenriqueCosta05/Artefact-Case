@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-30T15:45:00-03:00",
+  "title": "Design System: ArtefactAI",
+  "extensions": {
+    "colorMeta": {
+      "navy-ink": { "role": "neutral", "displayName": "Navy Ink", "canonical": "oklch(21.1% 0.060 268.3)", "tonalRamp": ["#030824", "#182241", "#323e60", "#4f5c80", "#6e7ca2", "#8e9ec5", "#b3c3ec", "#e8eefe"] },
+      "indigo-depth": { "role": "neutral", "displayName": "Indigo Depth", "canonical": "oklch(34.9% 0.115 272.0)", "tonalRamp": ["#050035", "#14195a", "#2c387b", "#48579e", "#6678c1", "#8599e6", "#b0c1ff", "#e9eeff"] },
+      "spectrum-blue": { "role": "secondary", "displayName": "Spectrum Blue", "canonical": "oklch(32.3% 0.194 264.1)", "tonalRamp": ["#000037", "#00007a", "#052ca4", "#2250c9", "#4073ef", "#6c9aff", "#a7c4fe", "#e7effe"] },
+      "cobalt": { "role": "secondary", "displayName": "Cobalt", "canonical": "oklch(47.8% 0.240 263.0)", "tonalRamp": ["#000038", "#001766", "#002ea2", "#0047e2", "#2f70ff", "#699bff", "#a6c4fe", "#e7effe"] },
+      "electric-blue": { "role": "secondary", "displayName": "Electric Blue", "canonical": "oklch(56.5% 0.239 262.8)", "tonalRamp": ["#000039", "#001765", "#002fa0", "#0047e1", "#2e70ff", "#6a9bfe", "#a6c4fe", "#e6effe"] },
+      "magenta": { "role": "primary", "displayName": "Signal Magenta", "canonical": "oklch(63.9% 0.255 10.5)", "tonalRamp": ["#200005", "#4a0018", "#7a012d", "#ae0143", "#e5025b", "#fe5e81", "#ffa8b4", "#ffe8ea"] },
+      "magenta-deep": { "role": "primary", "displayName": "Legible Magenta", "canonical": "oklch(55.8% 0.223 12.4)", "tonalRamp": ["#200004", "#4a0016", "#7a012a", "#ae013f", "#e21d58", "#ff5e7d", "#fea9b2", "#ffe8ea"] },
+      "magenta-ink": { "role": "primary", "displayName": "Magenta Ink", "canonical": "oklch(49.0% 0.196 9.8)", "tonalRamp": ["#1f0006", "#4a0018", "#7a002e", "#ae0045", "#d73763", "#fe5e83", "#fea8b5", "#fee8eb"] },
+      "mist": { "role": "neutral", "displayName": "Mist", "canonical": "oklch(84.2% 0 0)", "tonalRamp": ["#0b0b0b", "#242424", "#404040", "#5d5d5d", "#7d7d7d", "#9e9e9e", "#c4c4c4", "#eeeeee"] },
+      "paper": { "role": "neutral", "displayName": "Paper", "canonical": "oklch(100% 0 0)", "tonalRamp": ["#0b0b0b", "#242424", "#404040", "#5d5d5d", "#7d7d7d", "#9e9e9e", "#c4c4c4", "#eeeeee"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero statements, white on the spectrum field." },
+      "headline": { "displayName": "Headline", "purpose": "Section statements; one per view may take the spectrum gradient." },
+      "title": { "displayName": "Title", "purpose": "Card titles, pillar names, lead sentences." },
+      "body": { "displayName": "Body", "purpose": "Running text, max 70ch." },
+      "label": { "displayName": "Label", "purpose": "Navigation, buttons, metadata." },
+      "data": { "displayName": "Data", "purpose": "Figures, metrics and code in IBM Plex Mono with tabular numerals." }
+    },
+    "gradients": [
+      { "name": "spectrum-field", "value": "linear-gradient(142deg, #001994 17%, #ff0066 83%)", "purpose": "Full-bleed hero and statement sections." },
+      { "name": "spectrum-headline", "value": "linear-gradient(90deg, #ff0066 0%, #1f65ff 100%)", "purpose": "The single gradient headline per view." },
+      { "name": "spectrum-stroke", "value": "linear-gradient(135deg, #0046e1, #ff0066)", "purpose": "1px border of the outline button." }
+    ],
+    "shadows": [],
+    "motion": [
+      { "name": "ease-brand", "value": "cubic-bezier(0.42, 0.01, 0.58, 1)", "purpose": "Navigation and header color transitions (0.688s)." },
+      { "name": "duration-control", "value": "0.2s", "purpose": "Button color and background transitions." },
+      { "name": "duration-card", "value": "0.3s", "purpose": "Card image transform and filter on hover." }
+    ],
+    "breakpoints": [
+      { "name": "md", "value": "768px" },
+      { "name": "container", "value": "1440px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single magenta action of a view.",
+      "html": "<button class=\"ds-btn-primary\">Contact us</button>",
+      "css": ".ds-btn-primary { background: #d6004f; color: #ffffff; font: 500 14px/1.5 'IBM Plex Sans', Arial, sans-serif; padding: 9px 20px; border: none; border-radius: 40px; cursor: pointer; transition: background-color 0.2s; } .ds-btn-primary:hover { background: #b30047; } .ds-btn-primary:focus-visible { outline: 2px solid #d6004f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Light Button",
+      "kind": "button",
+      "refersTo": "button-light",
+      "description": "White pill used on spectrum fields.",
+      "html": "<div class=\"ds-field\"><button class=\"ds-btn-light\">Discover our offers</button></div>",
+      "css": ".ds-field { background: linear-gradient(142deg, #001994 17%, #ff0066 83%); padding: 32px; border-radius: 8px; } .ds-btn-light { background: #ffffff; color: #0d1634; font: 600 20px/1.2 'IBM Plex Sans', Arial, sans-serif; padding: 12px 28px; border: none; border-radius: 40px; cursor: pointer; transition: background-color 0.2s; } .ds-btn-light:hover { background: #e8eefe; } .ds-btn-light:focus-visible { outline: 2px solid #ffffff; outline-offset: 2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Read-more action with a cobalt-to-magenta gradient stroke.",
+      "html": "<button class=\"ds-btn-outline\">Read more</button>",
+      "css": ".ds-btn-outline { color: #d6004f; font: 500 14px/1 'IBM Plex Sans', Arial, sans-serif; padding: 9px 20px; border: 1px solid transparent; border-radius: 40px; background: linear-gradient(#ffffff, #ffffff) padding-box, linear-gradient(135deg, #0046e1, #ff0066) border-box; cursor: pointer; transition: color 0.2s; } .ds-btn-outline:hover { color: #b30047; } .ds-btn-outline:focus-visible { outline: 2px solid #d6004f; outline-offset: 2px; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Transparent header over the spectrum field.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-link\" href=\"#\">Industries</a><a class=\"ds-nav-link\" href=\"#\">Offers</a><a class=\"ds-nav-link\" href=\"#\">Insights</a><a class=\"ds-nav-cta\" href=\"#\">Contact</a></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; gap: 28px; padding: 20px 32px; background: linear-gradient(142deg, #001994 17%, #ff0066 83%); } .ds-nav-link { color: #ffffff; font: 500 14px/1 'IBM Plex Sans', Arial, sans-serif; text-decoration: none; transition: color 0.688s cubic-bezier(0.42, 0.01, 0.58, 1); } .ds-nav-link:hover { color: #ffa8b4; } .ds-nav-link:focus-visible, .ds-nav-cta:focus-visible { outline: 2px solid #ffffff; outline-offset: 4px; } .ds-nav-cta { margin-left: auto; background: #d6004f; color: #ffffff; font: 500 14px/1 'IBM Plex Sans', Arial, sans-serif; padding: 13px 22px; border-radius: 35px; text-decoration: none; transition: background-color 0.688s cubic-bezier(0.42, 0.01, 0.58, 1); } .ds-nav-cta:hover { background: #b30047; }"
+    },
+    {
+      "name": "Insight Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Flat paper card with flush media and an outline action.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-card-media\"></div><div class=\"ds-card-body\"><h3 class=\"ds-card-title\">Thinking in the age of AI</h3><p class=\"ds-card-text\">How leaders turn AI ambition into measurable impact.</p></div></article>",
+      "css": ".ds-card { width: 300px; background: #ffffff; color: #0d1634; border-radius: 8px; overflow: hidden; font-family: 'IBM Plex Sans', Arial, sans-serif; } .ds-card-media { height: 160px; background: linear-gradient(142deg, #001994 17%, #ff0066 83%); transition: transform 0.3s, filter 0.3s; } .ds-card:hover .ds-card-media { transform: scale(1.03); filter: brightness(1.08); } .ds-card-body { padding: 24px; } .ds-card-title { margin: 0 0 8px; font: 600 20px/1.2 inherit; } .ds-card-text { margin: 0; font: 400 16px/1.5 inherit; }"
+    },
+    {
+      "name": "Spectrum Headline",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "The one gradient headline allowed per view.",
+      "html": "<h2 class=\"ds-spectrum-headline\">End-to-end AI &amp; Data transformation</h2>",
+      "css": ".ds-spectrum-headline { margin: 0; font: 400 50px/1.2 'IBM Plex Sans', Arial, sans-serif; background: linear-gradient(90deg, #ff0066 0%, #1f65ff 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Prism Lab",
+    "overview": "Data enters as white light and leaves as a spectrum. The system is a calm, white laboratory bench (paper and deep navy ink) where the spectrum appears only at the moments that matter. It shows up as the diagonal navy-to-magenta field behind hero and statement sections, as the magenta signal on the one action that counts, and as iridescent imagery that refracts the brand palette. Everything else stays still, flat and precise, so the refraction reads as an event rather than as wallpaper.\n\nDensity is editorial rather than dashboard-tight. Headlines are large and light (IBM Plex Sans at weight 400), body copy is plain and readable, and sections are separated by generous vertical rhythm. Depth never comes from shadows; it comes from the contrast between paper surfaces and saturated gradient fields. The identity derives from artefact.com: the palette, type family, pill controls and flat surfaces are sampled from its rendered pages.",
+    "keyCharacteristics": [
+      "Paper and navy ink at rest; the spectrum gradient only on hero and statement fields.",
+      "One magenta signal per view: the primary action.",
+      "Light-weight display type with tight leading, semibold titles.",
+      "Pill-shaped controls, gently rounded cards, zero shadows.",
+      "Iridescent 3D imagery as the brand's prism, never flat illustration."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Magenta marks the single most important action or emphasis in a view. Two magenta buttons side by side means one of them is wrong.", "section": "colors" },
+      { "name": "The Legible Magenta Rule", "body": "Signal Magenta never sits under text smaller than 24px; text-bearing controls use Legible Magenta.", "section": "colors" },
+      { "name": "The Spectrum Is a Field Rule", "body": "Gradients fill large areas (hero, statement band, stat band) at 142°, or a single headline. They never fill buttons, cards or icons.", "section": "colors" },
+      { "name": "The Light Voice Rule", "body": "Display and headline stay at weight 400. Emphasis comes from scale or the single spectrum headline, never from bolding a headline.", "section": "typography" },
+      { "name": "The Spectrum Headline Rule", "body": "At most one headline per view may carry the magenta-to-electric-blue gradient. It is the brand's sanctioned exception to plain-colored type; body, labels and titles never take it.", "section": "typography" },
+      { "name": "The No-Shadow Rule", "body": "If a component seems to need a shadow to separate it, place it on a contrasting tonal surface instead.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do use Navy Ink for all text on paper; pure black does not appear.",
+      "Do keep Signal Magenta for one action or emphasis per view (The One Signal Rule).",
+      "Do run the spectrum at 142° from Spectrum Blue (17%) to Magenta (83%) on full-bleed fields.",
+      "Do keep display and headline type at weight 400 and step hierarchy with size.",
+      "Do theme browser surfaces from the palette: Legible Magenta selection, caret and focus rings."
+    ],
+    "donts": [
+      "Don't put text under 24px on Signal Magenta; use Legible Magenta.",
+      "Don't add box-shadows to cards, buttons or the header.",
+      "Don't fill buttons, cards or icons with the gradient.",
+      "Don't apply gradient text to more than one headline per view, or to any body, label or title text.",
+      "Don't introduce a second type family beyond IBM Plex Sans and IBM Plex Mono.",
+      "Don't use square-cornered buttons."
+    ]
+  }
+}
