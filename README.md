@@ -9,19 +9,66 @@ ArtefactAI/
 └── client/         frontend Next.js 16 (App Router, SSR, TanStack Query)
 ```
 
-## Como executar
+## Instalação
 
-Requisitos: Node.js 24 ou superior (o servidor roda `.ts` direto, sem build).
+### 1. Pré-requisitos
+
+| Ferramenta | Versão | Para quê |
+|---|---|---|
+| Node.js | 24 ou superior | O servidor roda `.ts` direto por type stripping, sem build. Em versões antigas ele não sobe |
+| npm | o que vem com o Node | Workspaces e o lockfile único da raiz |
+| PowerShell 7 (`pwsh`) | opcional | Só para os hooks do Claude Code em `.claude/` |
+
+Confira com `node -v` (deve mostrar `v24` ou mais). Se usa [fnm](https://github.com/Schniz/fnm) ou nvm, rode `fnm install 24` e depois `fnm use 24` antes de continuar.
+
+### 2. Dependências
+
+Na **raiz** do repositório (nunca dentro de `client/` ou `server/`):
 
 ```bash
 npm install
 ```
 
+Um único `npm install` instala os dois workspaces e liga `@artefactai/server` ao `client/` por symlink. Rodar `npm install` dentro de um workspace cria um segundo lockfile e quebra esse vínculo.
+
+### 3. Rodar em desenvolvimento
+
 ```bash
 SEED_TASKS=30 npm run dev
 ```
 
-No PowerShell: `$env:SEED_TASKS=30; npm run dev`. Abra <http://localhost:3000>. `SEED_TASKS` é opcional: cria tarefas de exemplo para testar o infinite scroll. Sem ele, a lista começa vazia.
+No PowerShell: `$env:SEED_TASKS=30; npm run dev`.
+
+O comando sobe o servidor tRPC em `:4000` e o Next.js em `:3000`, com logs prefixados por `server` e `client`. Abra <http://localhost:3000>.
+
+`SEED_TASKS` é opcional e cria tarefas de exemplo para testar o infinite scroll. Sem ele, a lista começa vazia. Os dados ficam em memória e somem quando o servidor reinicia.
+
+### 4. Conferir a instalação
+
+```bash
+npm test && npm run lint && npm run typecheck
+```
+
+Os três devem terminar sem erro. É o mesmo critério usado antes de cada commit.
+
+### 5. Build de produção
+
+```bash
+npm run build
+npm run start --workspace server
+npm run start --workspace client
+```
+
+Rode os dois `start` em terminais separados. Se o servidor não estiver em `http://localhost:4000/trpc`, defina `TRPC_SERVER_URL` **antes** do `build`, porque o rewrite é gravado no build.
+
+### Problemas comuns
+
+| Sintoma | Causa | Solução |
+|---|---|---|
+| `SyntaxError` ou `ERR_UNKNOWN_FILE_EXTENSION` ao subir o servidor | Node anterior ao 24 | Atualize o Node (passo 1) |
+| `EADDRINUSE :3000` ou `:4000` | Porta ocupada | Encerre o processo ou use `PORT=4001` no servidor e `TRPC_SERVER_URL` no client |
+| A lista mostra "Não foi possível carregar as tarefas" | Servidor tRPC fora do ar | Use `npm run dev` na raiz, que sobe os dois |
+| `Cannot find module '@artefactai/server'` | `npm install` rodado dentro de um workspace | Apague os `node_modules`, mantenha só o `package-lock.json` da raiz e rode `npm install` na raiz |
 
 | Script (na raiz) | O que faz |
 |---|---|
